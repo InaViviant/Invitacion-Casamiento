@@ -1,0 +1,460 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #404040 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            background: linear-gradient(145deg, #2c2c2c 0%, #3a3a3a 50%, #1f1f1f 100%);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #cd7f32;
+            position: relative;
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #000000, #333333, #b8722c, #cd7f32, #b8722c, #333333, #000000);
+            box-shadow: none;
+        }
+
+        .invitation-card::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid #cd7f32;
+            border-radius: 15px;
+            pointer-events: none;
+        }
+
+        .wedding-frame {
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            border: 3px solid #cd7f32;
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 30px 0 50px 0;
+            box-shadow: 0 0 30px rgba(205, 127, 50, 0.15);
+        }
+
+        .corner-flower {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.8);
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+
+        .corner-flower.top-left {
+            top: -25px;
+            left: -25px;
+        }
+
+        .corner-flower.top-right {
+            top: -25px;
+            right: -25px;
+        }
+
+        .corner-flower.bottom-left {
+            bottom: -25px;
+            left: -25px;
+        }
+
+        .corner-flower.bottom-right {
+            bottom: -25px;
+            right: -25px;
+        }
+
+        .corner-flower::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .corner-flower::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(0deg, transparent, #ffd700, transparent);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .corner-flower.top-left::before {
+            top: 30px;
+            left: 15px;
+            transform-origin: left;
+        }
+
+        .corner-flower.top-left::after {
+            top: 15px;
+            left: 30px;
+            transform-origin: top;
+        }
+
+        .corner-flower.top-right::before {
+            top: 30px;
+            right: 15px;
+            transform-origin: right;
+        }
+
+        .corner-flower.top-right::after {
+            top: 15px;
+            right: 30px;
+            transform-origin: top;
+        }
+
+        .corner-flower.bottom-left::before {
+            bottom: 30px;
+            left: 15px;
+            transform-origin: left;
+        }
+
+        .corner-flower.bottom-left::after {
+            bottom: 15px;
+            left: 30px;
+            transform-origin: bottom;
+        }
+
+        .corner-flower.bottom-right::before {
+            bottom: 30px;
+            right: 15px;
+            transform-origin: right;
+        }
+
+        .corner-flower.bottom-right::after {
+            bottom: 15px;
+            right: 30px;
+            transform-origin: bottom;
+        }
+
+        .side-decoration {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #cd7f32, transparent);
+            opacity: 0.6;
+        }
+
+        .side-decoration.left,
+        .side-decoration.right {
+            width: 2px;
+            height: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .side-decoration.left { left: 15px; }
+        .side-decoration.right { right: 15px; }
+
+        .side-decoration.top,
+        .side-decoration.bottom {
+            height: 2px;
+            width: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(0deg, transparent, #cd7f32, transparent);
+        }
+
+        .side-decoration.top { top: 15px; }
+        .side-decoration.bottom { bottom: 15px; }
+
+        .initials {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            color: #cd7f32;
+            margin-bottom: 15px;
+            letter-spacing: 12px;
+        }
+
+        .names {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: #e0e0e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 0;
+            letter-spacing: 4px;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 400;
+            filter: drop-shadow(0 0 8px #ffd700);
+        }
+
+        .info-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 4px solid #cd7f32;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #cd7f32;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .info-content {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-weight: 400;
+        }
+
+        .date-time {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .date-time-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .big-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #cd7f32;
+            display: block;
+            letter-spacing: 2px;
+        }
+
+        .location-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            color: #cd7f32;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #cd7f32;
+            letter-spacing: 0.5px;
+        }
+
+        .location-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
+        }
+
+        .dress-code {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid #cd7f32;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-section {
+            background: rgba(0, 0, 0, 0.4);
+            color: #cd7f32;
+            margin-top: 50px;
+            border-left: 4px solid #cd7f32;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .gift-section .info-title {
+            color: #cd7f32;
+        }
+
+        .gift-link {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            color: #cd7f32;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: 2px solid #cd7f32;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .gift-link:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+        }
+
+
+
+        .footer-message {
+            margin-top: 40px;
+            font-style: italic;
+            color: #cccccc;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+            
+            .invitation-card {
+                padding: 0;
+                border-radius: 0;
+                box-shadow: none;
+                border: none;
+                background: linear-gradient(145deg, #2c2c2c 0%, #3a3a3a 50%, #1f1f1f 100%);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .wedding-frame {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                border-radius: 0;
+                padding: 40px 20px;
+            }
+            
+            .info-section {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                border-radius: 0;
+                padding: 40px 20px;
+                text-align: center;
+            }
+            
+            .date-time {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .date-time-item {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .big-number {
+                font-size: 3rem;
+            }
+            
+            .initials {
+                font-size: 3rem;
+            }
+            
+            .names {
+                font-size: 2rem;
+            }
+            
+            .info-title {
+                font-size: 1.6rem;
+            }
+            
+            .info-content {
+                font-size: 1.2rem;
+            }
+            
+            .location-link, .gift-link {
+                font-size: 1.1rem;
+                padding: 18px 35px;
+            }
+            
+            .footer-message {
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                margin: 0;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 15px;
+                border-radius: 10px;
+                border: 1px solid #ffd700;
+            }
+
+            .corner-flower {
+                width: 40px;
+                height: 40px;
+            }
+
+            .corner-flower::before {
+                width: 25px;
+                height: 1px;
+            }
+
+            .corner-flower::after {
+                width: 1px;
+                height: 25px;
+            }
+
+            .corner-flower.top-left::before,
+            .corner-flower.top-right::before,
+            .corner-flower.bottom-left::before,
+            .corner-flower.bottom-right::before {
+                top: 20px;
+            }
+
+            .corner-flower.top-left::after,
+            .corner-flower.top-right::after,
+            .corner-flower.bottom-left::after,
+            .corner-flower.bottom-right::after {
+                left: 20px;
+            }
+        }
