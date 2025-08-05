@@ -53,12 +53,6 @@ Invitacion-Casamiento/
 
 ---
 
-## 📸 Capturas (opcional)
-
-> Podés agregar capturas de pantalla aquí si querés mostrar cómo se ve la web.
-
----
-
 ## ✨ Personalización
 
 Si querés adaptar este proyecto a tu propio evento:

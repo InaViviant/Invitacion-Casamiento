@@ -10,12 +10,9 @@ body {
     line-height: 1.6;
     color: #1f2937;
     scroll-behavior: smooth;
-    /* Optimización para móviles */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background optimizado */
+/* Background */
 .main-container {
     min-height: 100vh;
     background: linear-gradient(135deg, #0f172a 0%, #052e16 30%, #064e3b 70%, #1e293b 100%);
@@ -23,7 +20,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Pseudo-elemento optimizado con will-change */
 .main-container::before {
     content: '';
     position: fixed;
@@ -35,7 +31,6 @@ body {
                 radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
-    will-change: transform;
 }
 
 .content-wrapper {
@@ -45,20 +40,26 @@ body {
     margin: 0 auto;
 }
 
-/* Section optimizada - Sin animaciones complejas en móvil */
+/* Section Base Styles - Full screen on all devices */
 .section {
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    opacity: 1;
-    transform: translateY(0);
-    /* Usar transform3d para activar aceleración por hardware */
-    transform: translate3d(0, 0, 0);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
 }
 
-/* Main Wedding Frame optimizado */
+.section:nth-child(1) { animation-delay: 0.2s; }
+.section:nth-child(2) { animation-delay: 0.4s; }
+.section:nth-child(3) { animation-delay: 0.6s; }
+.section:nth-child(4) { animation-delay: 0.8s; }
+.section:nth-child(5) { animation-delay: 1.0s; }
+.section:nth-child(6) { animation-delay: 1.2s; }
+
+/* Main Wedding Frame */
 .wedding-frame {
     position: relative;
     width: 100%;
@@ -66,14 +67,13 @@ body {
     margin: 0 auto;
     padding: 2.5rem 2rem;
     background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(20, 83, 45, 0.8) 50%, rgba(15, 23, 42, 0.9) 100%);
-    backdrop-filter: blur(10px); /* Reducido para mejor performance */
+    backdrop-filter: blur(20px);
     border: 2px solid rgba(52, 211, 153, 0.3);
     border-radius: 1.5rem;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(52, 211, 153, 0.1);
     text-align: center;
-    /* Optimización GPU */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
 }
 
 .wedding-frame::before {
@@ -85,7 +85,7 @@ body {
     pointer-events: none;
 }
 
-/* Corner Decorations simplificadas */
+/* Corner Decorations - Simplified */
 .corner-decoration {
     position: absolute;
     width: 30px;
@@ -127,11 +127,11 @@ body {
     border-bottom-right-radius: 1rem;
 }
 
-/* Dots simplificados - sin animación en móvil */
 .corner-dot {
     position: absolute;
     background: #6ee7b7;
     border-radius: 50%;
+    animation: gentlePulse 3s ease-in-out infinite;
 }
 
 .dot-1 {
@@ -146,9 +146,10 @@ body {
     height: 6px;
     top: 16px;
     left: 16px;
+    animation-delay: 0.5s;
 }
 
-/* Typography optimizada */
+/* Typography */
 .initials {
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
@@ -156,7 +157,7 @@ body {
     color: #6ee7b7;
     letter-spacing: 0.3em;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 8px rgba(52, 211, 153, 0.4);
+    animation: glow 4s ease-in-out infinite alternate;
 }
 
 .names {
@@ -179,7 +180,7 @@ body {
     margin: 0 auto 2rem;
 }
 
-/* Heart simplificado */
+/* Heart Animation - More subtle */
 .heart-container {
     display: flex;
     justify-content: center;
@@ -190,6 +191,7 @@ body {
     position: relative;
     width: 24px;
     height: 24px;
+    animation: heartbeat 2.5s ease-in-out infinite;
 }
 
 .heart-part {
@@ -216,22 +218,28 @@ body {
     opacity: 0.8;
 }
 
-/* Info Sections optimizadas */
+/* Info Sections */
 .info-card {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 2rem;
     background: linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(20, 83, 45, 0.7) 50%, rgba(15, 23, 42, 0.85) 100%);
-    backdrop-filter: blur(10px); /* Reducido */
+    backdrop-filter: blur(15px);
     border-left: 4px solid rgba(52, 211, 153, 0.6);
     border-radius: 1.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(52, 211, 153, 0.1);
     position: relative;
-    /* Optimización GPU */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.2s ease; /* Reducida duración */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(52, 211, 153, 0.15);
 }
 
 .info-card::before {
@@ -272,7 +280,7 @@ body {
     color: #34d399;
     display: block;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+    animation: numberGlow 3s ease-in-out infinite alternate;
 }
 
 .date-label {
@@ -280,7 +288,7 @@ body {
     color: #dcfce7;
 }
 
-/* Countdown optimizado */
+/* Countdown Section */
 .countdown-card {
     background: linear-gradient(145deg, rgba(20, 83, 45, 0.9) 0%, rgba(6, 78, 59, 0.8) 50%, rgba(20, 83, 45, 0.9) 100%) !important;
     border-left: 4px solid rgba(110, 231, 183, 0.8) !important;
@@ -300,10 +308,14 @@ body {
     border-radius: 1rem;
     padding: 1.5rem 0.5rem;
     border: 1px solid rgba(52, 211, 153, 0.3);
-    backdrop-filter: blur(5px); /* Reducido */
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.2s ease;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(110, 231, 183, 0.6);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .countdown-number {
@@ -313,7 +325,8 @@ body {
     color: #34d399;
     display: block;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+    animation: countdownGlow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
 }
 
 .countdown-label {
@@ -336,13 +349,36 @@ body {
     font-weight: 400;
 }
 
-/* Botones optimizados */
+.countdown-expired {
+    color: #fbbf24 !important;
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes countdownGlow {
+    from {
+        text-shadow: 0 0 5px rgba(52, 211, 153, 0.4);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(52, 211, 153, 0.8), 0 0 25px rgba(52, 211, 153, 0.4);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Calendar Button */
 .calendar-button-container {
     margin-top: 2rem;
     text-align: center;
 }
 
-.calendar-button, .location-link, .gift-button {
+.calendar-button {
     display: inline-block;
     background: linear-gradient(135deg, #059669, #047857);
     color: white;
@@ -350,14 +386,18 @@ body {
     border-radius: 50px;
     border: 2px solid #22c55e;
     cursor: pointer;
+    transition: all 0.3s ease;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     text-decoration: none;
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    transition: all 0.2s ease;
+}
+
+.calendar-button:hover {
+    background: linear-gradient(135deg, #047857, #059669);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Location */
@@ -371,6 +411,24 @@ body {
     font-weight: 600;
     color: #dcfce7;
     margin-bottom: 1.5rem;
+}
+
+.location-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #059669, #047857);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+}
+
+.location-link:hover {
+    background: linear-gradient(135deg, #047857, #059669);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* Dress Code */
@@ -400,6 +458,7 @@ body {
 .divider-ornament {
     font-size: 2rem;
     color: rgba(52, 211, 153, 0.7);
+    animation: rotate 8s linear infinite;
 }
 
 /* Gift Section */
@@ -420,6 +479,28 @@ body {
     margin-bottom: 2rem;
 }
 
+.gift-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #15803d, #166534);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    border: 2px solid #22c55e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.gift-button:hover {
+    background: linear-gradient(135deg, #166534, #15803d);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
 /* Footer */
 .footer-message {
     text-align: center;
@@ -435,61 +516,86 @@ body {
     margin: 0 auto;
 }
 
-/* Animaciones solo en desktop */
-@media (min-width: 769px) {
-    .corner-dot {
-        animation: gentlePulse 3s ease-in-out infinite;
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    
-    .heart-animation {
-        animation: heartbeat 2.5s ease-in-out infinite;
-    }
-    
-    .initials {
-        animation: glow 4s ease-in-out infinite alternate;
-    }
-    
-    .big-number {
-        animation: numberGlow 3s ease-in-out infinite alternate;
-    }
-    
-    .countdown-number {
-        animation: countdownGlow 2s ease-in-out infinite alternate;
-    }
-    
-    .divider-ornament {
-        animation: rotate 8s linear infinite;
-    }
-    
-    .info-card:hover, .countdown-item:hover {
-        transform: translateY(-5px);
-    }
-    
-    .calendar-button:hover, .location-link:hover, .gift-button:hover {
-        transform: translateY(-2px);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Mobile Responsive optimizado */
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(52, 211, 153, 0.3);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(52, 211, 153, 0.6), 0 0 25px rgba(52, 211, 153, 0.3);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes numberGlow {
+    from {
+        text-shadow: 0 0 5px rgba(52, 211, 153, 0.3);
+    }
+    to {
+        text-shadow: 0 0 10px rgba(52, 211, 153, 0.6);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
     .section {
         padding: 0.5rem;
         height: 100vh;
-        /* Mejor performance en móvil */
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
     }
     
     .wedding-frame {
         padding: 2rem 1.5rem;
         max-width: 95%;
-        backdrop-filter: blur(5px); /* Menos blur en móvil */
     }
     
     .info-card {
         padding: 1.8rem 1.5rem;
         max-width: 95%;
-        backdrop-filter: blur(5px); /* Menos blur en móvil */
     }
     
     .initials {
@@ -519,6 +625,7 @@ body {
         font-size: 2rem;
     }
     
+    /* Countdown responsive */
     .countdown-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
@@ -530,52 +637,12 @@ body {
     
     .countdown-item {
         padding: 1.2rem 0.5rem;
-        backdrop-filter: blur(3px); /* Menos blur */
-    }
-    
-    /* Botones más grandes en móvil */
-    .calendar-button, .location-link, .gift-button {
-        padding: 1.2rem 2rem;
-        font-size: 1.1rem;
     }
 }
 
-/* Animaciones optimizadas */
-@keyframes gentlePulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 5px rgba(52, 211, 153, 0.3); }
-    to { text-shadow: 0 0 15px rgba(52, 211, 153, 0.6); }
-}
-
-@keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.1); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.05); }
-}
-
-@keyframes numberGlow {
-    from { text-shadow: 0 0 5px rgba(52, 211, 153, 0.3); }
-    to { text-shadow: 0 0 10px rgba(52, 211, 153, 0.6); }
-}
-
-@keyframes countdownGlow {
-    from { text-shadow: 0 0 5px rgba(52, 211, 153, 0.4); }
-    to { text-shadow: 0 0 15px rgba(52, 211, 153, 0.8); }
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Custom scrollbar optimizado */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -584,20 +651,33 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: #059669;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 
-/* Touch optimizations para móvil */
-@media (hover: none) and (pointer: coarse) {
-    .info-card, .countdown-item, .calendar-button, .location-link, .gift-button {
-        transition: none;
-    }
-    
-    .info-card:active {
-        transform: scale(0.98);
-    }
-    
-    .calendar-button:active, .location-link:active, .gift-button:active {
-        transform: scale(0.95);
+::-webkit-scrollbar-thumb:hover {
+    background: #047857;
+}
+
+/* Smooth transitions */
+* {
+    transition: color 0.3s ease;
+}
+
+.wedding-frame,
+.info-card {
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    min-height: 60dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .wedding-frame,
+    .info-card {
+        padding: 2rem 1rem;
+        min-height: 70dvh;
     }
 }
