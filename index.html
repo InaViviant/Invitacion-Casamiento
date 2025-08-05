@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <body>
     <div class="main-container">
         <div class="content-wrapper">
             <!-- Main Wedding Section -->
@@ -79,6 +80,34 @@
                         <button class="calendar-button" onclick="addToCalendar()">
                             📅 Agregar al Calendario
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Countdown Section -->
+            <div class="section">
+                <div class="info-card countdown-card">
+                    <h2 class="section-title">⏰ Cuenta Regresiva</h2>
+                    <div class="countdown-container">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">000</div>
+                            <div class="countdown-label">Días</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">Horas</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">Minutos</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">Segundos</div>
+                        </div>
+                    </div>
+                    <div class="countdown-message">
+                        <p id="countdown-text">¡Nos casamos en...</p>
                     </div>
                 </div>
             </div>
