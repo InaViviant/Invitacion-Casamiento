@@ -3,80 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Casamiento</title>
-     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Invitación de Casamiento - Iñaki y Melany</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <div class="container">
-        <div class="invitation-card">
-            <div class="wedding-frame">
-                <div class="corner-flower top-left"></div>
-                <div class="corner-flower top-right"></div>
-                <div class="corner-flower bottom-left"></div>
-                <div class="corner-flower bottom-right"></div>
-                
-                <div class="side-decoration left"></div>
-                <div class="side-decoration right"></div>
-                <div class="side-decoration top"></div>
-                <div class="side-decoration bottom"></div>
-                
-                <div class="initials">I&M</div>
-                <h1 class="names">Iñaki y Melany</h1>
-            </div>
-            
-            <div class="info-section">
-                <h2 class="info-title">📅 Fecha y Hora</h2>
-                <div class="date-time">
-                    <div class="date-time-item">
-                        <span class="big-number">21/10</span>
-                        <div class="info-content">Octubre 2030</div>
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Main Wedding Section -->
+            <div class="section">
+                <div class="wedding-frame">
+                    <!-- Decorative Corner Elements -->
+                    <div class="corner-decoration top-left">
+                        <div class="corner-border"></div>
+                        <div class="corner-dot dot-1"></div>
+                        <div class="corner-dot dot-2"></div>
                     </div>
-                    <div class="date-time-item">
-                        <span class="big-number">21:00</span>
-                        <div class="info-content">Hs.</div>
+                    
+                    <div class="corner-decoration top-right">
+                        <div class="corner-border"></div>
+                        <div class="corner-dot dot-1"></div>
+                        <div class="corner-dot dot-2"></div>
+                    </div>
+                    
+                    <div class="corner-decoration bottom-left">
+                        <div class="corner-border"></div>
+                        <div class="corner-dot dot-1"></div>
+                        <div class="corner-dot dot-2"></div>
+                    </div>
+                    
+                    <div class="corner-decoration bottom-right">
+                        <div class="corner-border"></div>
+                        <div class="corner-dot dot-1"></div>
+                        <div class="corner-dot dot-2"></div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div>
+                        <div class="initials">I&M</div>
+                        
+                        <h1 class="names">Iñaki y Melany</h1>
+                        
+                        <p class="romantic-quote">
+                            "Dos almas que se encuentran, dos corazones que laten al unísono,<br/>
+                            una historia de amor que comienza para siempre"
+                        </p>
+                        
+                        <!-- Animated Heart -->
+                        <div class="heart-container">
+                            <div class="heart-animation">
+                                <div class="heart-part heart-left"></div>
+                                <div class="heart-part heart-right"></div>
+                                <div class="heart-part heart-bottom"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="info-section">
-                <h2 class="info-title">📍 Lugar</h2>
-                <div class="info-content">
-                    <strong>Estancia la Mimosa</strong><br>
-                    <a href="https://maps.app.goo.gl/15AFMSVF9Pb9RT918" target="_blank" class="location-link">
-                        📍 Ver en Google Maps
-                    </a>
+            <!-- Date & Time Section -->
+            <div class="section">
+                <div class="info-card">
+                    <h2 class="section-title">📅 Fecha y Hora</h2>
+                    <div class="date-time-grid">
+                        <div class="date-time-item">
+                            <div class="big-number">21/10</div>
+                            <div class="date-label">Octubre 2030</div>
+                        </div>
+                        <div class="date-time-item">
+                            <div class="big-number">21:00</div>
+                            <div class="date-label">Hs.</div>
+                        </div>
+                    </div>
+                    <div class="calendar-button-container">
+                        <button class="calendar-button" onclick="addToCalendar()">
+                            📅 Agregar al Calendario
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="info-section dress-code">
-                <h2 class="info-title">👗 Código de Vestimenta</h2>
-                <div class="info-content">
-                    <strong>Para las mujeres:</strong> Vestido largo<br>
-                    <strong>Para los hombres:</strong> Traje y corbata
+            <!-- Location Section -->
+            <div class="section">
+                <div class="info-card">
+                    <h2 class="section-title">📍 Lugar</h2>
+                    <div class="location-content">
+                        <div class="venue-name">Estancia la Mimosa</div>
+                        <a 
+                            href="https://maps.app.goo.gl/15AFMSVF9Pb9RT918" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="location-link"
+                        >
+                            📍 Ver en Google Maps
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="decorative-element">❦</div>
-
-            <div class="info-section gift-section">
-                <h2 class="info-title">🎁 Regalo de Bodas</h2>
-                <div class="info-content">
-                    Tu presencia es nuestro mejor regalo, pero si deseas contribuir con algo especial para nuestro nuevo hogar, puedes hacerlo aquí:
+            <!-- Dress Code Section -->
+            <div class="section">
+                <div class="info-card">
+                    <h2 class="section-title">👗 Código de Vestimenta</h2>
+                    <div class="dress-code-content">
+                        <div class="dress-item">
+                            <strong class="dress-label">Para las mujeres:</strong> Vestido largo
+                        </div>
+                        <div class="dress-item">
+                            <strong class="dress-label">Para los hombres:</strong> Traje y corbata
+                        </div>
+                    </div>
                 </div>
-                <a href="#" onclick="handleGiftClick()" class="gift-link">
-                    💳 Realizar Transferencia
-                </a>
             </div>
 
-            <div class="footer-message">
-                ¡Esperamos celebrar este día tan especial junto a ti!
+            <!-- Decorative Divider -->
+            <div class="section">
+                <div class="decorative-divider">
+                    <div class="divider-ornament">❦</div>
+                </div>
+            </div>
+
+            <!-- Gift Section -->
+            <div class="section gift-section">
+                <div class="info-card">
+                    <h2 class="section-title">🎁 Regalo de Bodas</h2>
+                    <div class="gift-content">
+                        <p class="gift-text">
+                            Tu presencia es nuestro mejor regalo, pero si deseas contribuir con algo especial para nuestro nuevo hogar, puedes hacerlo aquí:
+                        </p>
+                        <button class="gift-button" onclick="handleGiftClick()">
+                            💳 Realizar Transferencia
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Message -->
+            <div class="section">
+                <div class="footer-message">
+                    <p class="footer-text">
+                        ¡Esperamos celebrar este día tan especial junto a ti!
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="scripts.js"></script>
-
 </body>
-
 </html>
