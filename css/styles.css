@@ -1,0 +1,609 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.main-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Section Styles */
+.section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem;
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-content {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Hero Section */
+.hero-section {
+    background: radial-gradient(ellipse at center, rgba(26, 26, 46, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+}
+
+.initials-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-shadow: 0 0 20px rgba(30, 58, 138, 0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.initials-decoration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(30, 58, 138, 0.3);
+    border-radius: 50%;
+    animation: rotate 20s linear infinite;
+}
+
+.initials-decoration::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #1e3a8a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(30, 58, 138, 0.8);
+}
+
+.names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 2rem 0;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ampersand {
+    color: #1e3a8a;
+    font-style: italic;
+    margin: 0 0.5rem;
+}
+
+.romantic-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #e5e7eb;
+    margin: 2rem 0;
+    line-height: 1.8;
+}
+
+.heart-container {
+    margin: 3rem 0;
+}
+
+.heart {
+    width: 40px;
+    height: 36px;
+    position: relative;
+    margin: 0 auto;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    width: 26px;
+    height: 40px;
+    position: absolute;
+    left: 20px;
+    top: 0;
+    background: #1e3a8a;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    box-shadow: 0 0 15px rgba(30, 58, 138, 0.6);
+}
+
+.heart::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, #1e3a8a);
+    position: relative;
+}
+
+.scroll-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #1e3a8a;
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(30, 58, 138, 0.3);
+}
+
+/* Date Section */
+.date-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.date-item, .time-item {
+    text-align: center;
+}
+
+.date-number, .time-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.date-month, .date-year, .time-label {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.time-separator {
+    font-size: 2rem;
+    color: #1e3a8a;
+}
+
+/* Countdown Section */
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 3rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.countdown-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(30, 58, 138, 0.1);
+    border: 1px solid rgba(30, 58, 138, 0.3);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.countdown-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    color: #e5e7eb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+.countdown-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #e5e7eb;
+    margin-top: 2rem;
+}
+
+/* Location Section */
+.location-content {
+    text-align: center;
+}
+
+.venue-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.venue-address {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* Dress Code Section */
+.dress-code-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.dress-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(30, 58, 138, 0.1);
+    border: 1px solid rgba(30, 58, 138, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dress-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+}
+
+.dress-icon {
+    font-size: 3rem;
+}
+
+.dress-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.dress-content p {
+    color: #e5e7eb;
+    font-size: 1.1rem;
+}
+
+/* RSVP Section */
+.rsvp-description {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.rsvp-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #1e3a8a;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(30, 58, 138, 0.1);
+    border: 1px solid rgba(30, 58, 138, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+}
+
+.form-group input::placeholder {
+    color: rgba(229, 231, 235, 0.5);
+}
+
+/* Buttons */
+.elegant-button {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.elegant-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Gift Section */
+.gift-description {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Final Section */
+.final-message {
+    text-align: center;
+}
+
+.final-message h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.final-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.decoration-line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #1e3a8a, transparent);
+}
+
+.decoration-heart {
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+.final-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: #1e3a8a;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+}
+
+/* Navigation Dots */
+.navigation-dots {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1000;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(30, 58, 138, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dot.active {
+    background: #1e3a8a;
+    box-shadow: 0 0 10px rgba(30, 58, 138, 0.8);
+    border-color: rgba(30, 58, 138, 0.5);
+}
+
+.dot:hover {
+    background: #1e3a8a;
+    transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section {
+        padding: 1rem;
+    }
+    
+    .initials {
+        font-size: 4rem;
+    }
+    
+    .names {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .date-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .countdown-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .dress-code-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .dress-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .navigation-dots {
+        right: 1rem;
+    }
+    
+    .romantic-quote {
+        font-size: 1rem;
+    }
+    
+    .final-message h2 {
+        font-size: 1.8rem;
+    }
+}
