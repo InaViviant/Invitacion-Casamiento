@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Estilo base */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +17,7 @@ body {
     line-height: 1.6;
 }
 
-/* Main Container */
+/* Contenedor main */
 .main-container {
     position: relative;
     width: 100%;
@@ -25,7 +25,7 @@ body {
     overflow: hidden;
 }
 
-/* Section Styles */
+/* Estilos de la sección */
 .section {
     position: absolute;
     top: 0;
@@ -53,7 +53,7 @@ body {
     animation: fadeInUp 1s ease-out;
 }
 
-/* Hero Section */
+/* Inicio */
 .hero-section {
     background: radial-gradient(ellipse at center, rgba(26, 26, 46, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
 }
@@ -188,7 +188,7 @@ body {
     border-top: 8px solid #1e3a8a;
 }
 
-/* Section Titles */
+/* Presentación */
 .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
@@ -198,7 +198,7 @@ body {
     text-shadow: 0 2px 10px rgba(30, 58, 138, 0.3);
 }
 
-/* Date Section */
+/* Día del casamiento */
 .date-container {
     display: flex;
     align-items: center;
@@ -231,7 +231,7 @@ body {
     color: #1e3a8a;
 }
 
-/* Countdown Section */
+/* Cuenta regresiva */
 .countdown-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -274,7 +274,7 @@ body {
     margin-top: 2rem;
 }
 
-/* Location Section */
+/* Ubicación */
 .location-content {
     text-align: center;
 }
@@ -295,7 +295,7 @@ body {
     font-style: italic;
 }
 
-/* Dress Code Section */
+/* Código de vestimenta */
 .dress-code-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -336,7 +336,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* RSVP Section */
+/* Formulario asistencia */
 .rsvp-description {
     font-size: 1.2rem;
     color: #e5e7eb;
@@ -391,7 +391,7 @@ body {
     color: rgba(229, 231, 235, 0.5);
 }
 
-/* Buttons */
+/* Botones */
 .elegant-button {
     background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     color: #ffffff;
@@ -419,7 +419,7 @@ body {
     margin-top: 1rem;
 }
 
-/* Gift Section */
+/* Regalos */
 .gift-description {
     font-size: 1.2rem;
     color: #e5e7eb;
@@ -427,7 +427,7 @@ body {
     line-height: 1.6;
 }
 
-/* Final Section */
+/* Despedida */
 .final-message {
     text-align: center;
 }
@@ -468,7 +468,7 @@ body {
     text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
 }
 
-/* Navigation Dots */
+/* Navegación con puntos */
 .navigation-dots {
     position: fixed;
     right: 2rem;
@@ -501,7 +501,7 @@ body {
     transform: scale(1.2);
 }
 
-/* Animations */
+/* Animaciones*/
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -554,7 +554,7 @@ body {
     }
 }
 
-/* Responsive Design */
+/* Modelo responsive */
 @media (max-width: 768px) {
     .section {
         padding: 1rem;

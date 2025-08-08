@@ -17,6 +17,8 @@ Esta página fue creada como una invitación digital para el casamiento de **Iñ
 - 👗 Código de vestimenta
 - 🎁 Opción simbólica para regalo de bodas
 - 📆 Botón para agregar el evento al calendario (Android, iOS, Google)
+- 📝 Formulario para confirmación de asistencia
+
 
 ---
 
@@ -35,41 +37,23 @@ Esta página fue creada como una invitación digital para el casamiento de **Iñ
 Invitacion-Casamiento/
 │
 ├── index.html          # Página principal
-├── styles.css          # Estilos personalizados
-├── scripts.js          # Lógica e interacciones
+├── css/
+    └── styles.css      # Estilos personalizados
+├── js/
+    └── scripts.js       # Lógica e interacciones
 └── README.md           # Este archivo
 ```
 
 ---
 
-## 🚀 Cómo verlo en local
-
-1. Cloná el repositorio:
-   ```bash
-   git clone https://github.com/inaviviant/Invitacion-Casamiento.git
-   ```
-
-2. Abrí el archivo `index.html` en tu navegador preferido.
-
----
-
-## ✨ Personalización
-
-Si querés adaptar este proyecto a tu propio evento:
-
-- Cambiá nombres y fechas en `index.html`
-- Modificá los estilos en `styles.css`
-- Ajustá los textos o mensajes en `scripts.js`
-
----
 
 ## 📄 Licencia
 
-Este proyecto fue creado con fines educativos y personales. Podés usarlo como base para tus propios eventos sin problema.
+Este proyecto fue creado con fines educativos y personales.
 
 ---
 
 ## 💌 Agradecimientos
 
 Gracias por visitar esta invitación especial.  
-¡Esperamos que te guste tanto como a nosotros crearla!
+¡Espero que te guste tanto como a mi crearla!

@@ -1,9 +1,9 @@
-// Global variables
+// Variables globales
 let currentSection = 0;
 const totalSections = 8;
 let isScrolling = false;
 
-// Initialize the application
+// Inicia la aplicación
 document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeCountdown();
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrolling();
 });
 
-// Navigation functionality
+// Función de navegación
 function initializeNavigation() {
     const dots = document.querySelectorAll('.dot');
     
@@ -24,12 +24,12 @@ function initializeNavigation() {
     });
 }
 
-// Smooth scrolling between sections
+// Smooth scroll
 function initializeScrolling() {
     let touchStartY = 0;
     let touchEndY = 0;
     
-    // Mouse wheel events
+    // Scroll
     document.addEventListener('wheel', (e) => {
         if (isScrolling) return;
         
@@ -44,7 +44,7 @@ function initializeScrolling() {
         }
     }, { passive: false });
     
-    // Touch events for mobile
+    // Eventos para celular
     document.addEventListener('touchstart', (e) => {
         touchStartY = e.touches[0].clientY;
     });
@@ -64,7 +64,7 @@ function initializeScrolling() {
         }
     });
     
-    // Keyboard navigation
+    // Navegación teclado
     document.addEventListener('keydown', (e) => {
         if (isScrolling) return;
         
@@ -99,7 +99,7 @@ function goToSection(sectionIndex) {
     
     isScrolling = true;
     
-    // Remove active class from current section
+    // Elimina la clase activa
     const currentSectionElement = document.querySelector(`.section[data-section="${currentSection}"]`);
     const currentDot = document.querySelector(`.dot[data-section="${currentSection}"]`);
     
@@ -110,7 +110,7 @@ function goToSection(sectionIndex) {
         currentDot.classList.remove('active');
     }
     
-    // Add active class to new section
+    // Agrega nueva clase a la sección
     const newSectionElement = document.querySelector(`.section[data-section="${sectionIndex}"]`);
     const newDot = document.querySelector(`.dot[data-section="${sectionIndex}"]`);
     
@@ -123,13 +123,13 @@ function goToSection(sectionIndex) {
     
     currentSection = sectionIndex;
     
-    // Reset scrolling flag after animation
+    // Reestablecer después de la animación
     setTimeout(() => {
         isScrolling = false;
     }, 800);
 }
 
-// Countdown functionality
+// Función de cuenta atras
 function initializeCountdown() {
     const weddingDate = new Date('2030-10-21T21:00:00').getTime();
     
@@ -161,7 +161,7 @@ function initializeCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// Form functionality
+// Función del formulario
 function initializeForm() {
     const attendanceSelect = document.getElementById('attendance');
     const guestsGroup = document.getElementById('guestsGroup');
@@ -182,12 +182,12 @@ function initializeForm() {
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         
-        // Add form validation
+        // Agrega la validación
         if (!validateForm(data)) {
             return;
         }
         
-        // Simulate form submission
+        // Simula la validación
         showSuccessMessage();
     });
 }
@@ -203,7 +203,7 @@ function validateForm(data) {
         return false;
     }
     
-    // DNI validation (basic)
+    // Validar DNI
     const dniPattern = /^\d{1,2}\.?\d{3}\.?\d{3}$/;
     if (!dniPattern.test(dni)) {
         showErrorMessage('Por favor, ingresa un DNI válido.');
@@ -229,7 +229,7 @@ function showSuccessMessage() {
 }
 
 function showErrorMessage(message) {
-    // Create error message element
+    // Crea un mensaje de error
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = message;
@@ -251,7 +251,7 @@ function showErrorMessage(message) {
     }, 5000);
 }
 
-// Calendar functionality
+// Función del calendario
 function addToCalendar() {
     const title = 'Casamiento de Iñaki y Melany';
     const details = 'Celebración de la boda de Iñaki y Melany en Estancia la Mimosa';
@@ -264,7 +264,7 @@ function addToCalendar() {
     window.open(googleCalendarUrl, '_blank');
 }
 
-// Gift functionality
+// Función de regalo
 function handleGiftClick() {
     const modal = createGiftModal();
     document.body.appendChild(modal);
@@ -348,7 +348,7 @@ function closeGiftModal() {
     }
 }
 
-// Add CSS for modal
+// CSS en modal
 const modalStyles = `
     .gift-modal.active {
         opacity: 1 !important;
@@ -394,7 +394,7 @@ const modalStyles = `
     }
 `;
 
-// Add modal styles to head
+// Estilos al encabezado
 const styleSheet = document.createElement('style');
 styleSheet.textContent = modalStyles;
 document.head.appendChild(styleSheet);
