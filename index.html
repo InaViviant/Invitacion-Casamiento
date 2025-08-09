@@ -103,50 +103,71 @@
         <section class="section dress-section" data-section="4">
             <div class="section-content">
                 <h2 class="section-title">Código de Vestimenta</h2>
-                <div class="dress-code-container">
-                    <div class="dress-item">
-                        <div class="dress-icon">👗</div>
-                        <div class="dress-content">
-                            <h3>Para las Damas</h3>
-                            <p>Vestido largo elegante</p>
+                
+                <div class="dress-main-message">
+                    <div class="elegance-icon">✨</div>
+                    <h3 class="elegance-title">Elegancia Formal</h3>
+                    <p class="elegance-description">
+                        Te pedimos que vengas con tu mejor look elegante.<br>
+                        Queremos que te sientas cómodo/a y radiante en nuestro día especial.
+                    </p>
+                </div>
+
+                <div class="dress-guidelines">
+                    <div class="guideline-item">
+                        <div class="guideline-icon">👗</div>
+                        <div class="guideline-content">
+                            <h4>Damas</h4>
+                            <p>Vestido elegante largo o midi</p>
                         </div>
                     </div>
-                    <div class="dress-item">
-                        <div class="dress-icon">🤵</div>
-                        <div class="dress-content">
-                            <h3>Para los Caballeros</h3>
-                            <p>Traje formal y corbata</p>
+                    
+                    <div class="guideline-item">
+                        <div class="guideline-icon">🤵</div>
+                        <div class="guideline-content">
+                            <h4>Caballeros</h4>
+                            <p>Traje formal con corbata o moño</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="color-restriction">
+                    <div class="restriction-header">
+                        <div class="restriction-icon">🚫</div>
+                        <h3 class="restriction-title">Colores Reservados</h3>
+                        <p class="restriction-subtitle">Por favor, evita estos colores para que no coincidan con nuestra paleta especial</p>
+                    </div>
+                    
+                    <div class="restricted-colors">
+                        <div class="color-item">
+                            <div class="color-swatch black"></div>
+                            <span>Negro</span>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-swatch red"></div>
+                            <span>Rojo</span>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-swatch white"></div>
+                            <span>Blanco</span>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-swatch green"></div>
+                            <span>Verde Pantano</span>
+                        </div>
+                        <div class="color-item">
+                            <div class="color-swatch navy"></div>
+                            <span>Azul Marino</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dress-footer">
+                    <p class="dress-note">
+                        💡 <em>Sugerencia: Tonos pasteles, dorados, plateados y colores tierra lucen hermosos en fotos</em>
+                    </p>
+                </div>
             </div>
-             <!-- Colores a evitar -->
-        <div class="avoid-colors-section">
-            <h3 class="avoid-colors-title">Por favor, evita estos colores:</h3>
-            <div class="color-circles-container">
-                <div class="color-circle-item">
-                    <div class="color-circle" style="background-color: #000000;"></div>
-                    <span class="color-name">Negro</span>
-                </div>
-                <div class="color-circle-item">
-                    <div class="color-circle" style="background-color: #DC143C;"></div>
-                    <span class="color-name">Rojo</span>
-                </div>
-                <div class="color-circle-item">
-                    <div class="color-circle" style="background-color: #FFFFFF; border: 2px solid rgba(212, 175, 55, 0.3);"></div>
-                    <span class="color-name">Blanco</span>
-                </div>
-                <div class="color-circle-item">
-                    <div class="color-circle" style="background-color: #1a3d2e;"></div>
-                    <span class="color-name">Verde Pantano</span>
-                </div>
-                <div class="color-circle-item">
-                    <div class="color-circle" style="background-color: #191970;"></div>
-                    <span class="color-name">Azul Marino</span>
-                </div>
-            </div>
-        </div>
-    </div>
         </section>
 
         <!-- Formulario -->
@@ -178,6 +199,15 @@
                                 <option value="">Selecciona una opción</option>
                                 <option value="si">Sí, asistiré</option>
                                 <option value="no">No podré asistir</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="guestsGroup" style="display: none;">
+                            <label for="guests">¿Vienes acompañado/a?</label>
+                            <select id="guests">
+                                <option value="0">Solo/a</option>
+                                <option value="1">Con 1 acompañante</option>
+                                <option value="2">Con 2 acompañantes</option>
+                                <option value="3">Con 3 acompañantes</option>
                             </select>
                         </div>
                         <button type="submit" class="elegant-button submit-button">
@@ -259,6 +289,6 @@
     </div>
 
     <script src="js/scripts.js"></script>
-
+    
 </body>
 </html>
