@@ -1,4 +1,4 @@
-/* Reset y configuración base */
+/* Configuración base */
 * {
     margin: 0;
     padding: 0;
@@ -78,7 +78,7 @@ body {
     animation: shimmer 2s ease-in-out infinite;
 }
 
-/* Hero Section */
+/* Presentación */
 .hero-section {
     background: linear-gradient(135deg, #1a3d2e 0%, #0f2419 30%, #1a3d2e 70%, #0f2419 100%);
 }
@@ -204,7 +204,7 @@ body {
     opacity: 0.7;
 }
 
-/* Date Section */
+/* Día del casamiento */
 .date-container {
     display: flex;
     align-items: center;
@@ -251,7 +251,7 @@ body {
     opacity: 0.7;
 }
 
-/* Countdown Section */
+/* Cuenta atras */
 .countdown-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -300,7 +300,7 @@ body {
     font-style: italic;
 }
 
-/* Location Section */
+/* Ubicación */
 .location-content {
     text-align: center;
 }
@@ -321,7 +321,7 @@ body {
     opacity: 0.9;
 }
 
-/* Dress Code Section */
+/* Código de vestimenta */
 .dress-code-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -362,7 +362,7 @@ body {
     opacity: 0.9;
 }
 
-/* RSVP Section */
+/* Formulario */
 .rsvp-description {
     font-size: 1.1rem;
     color: #ffffff;
@@ -418,7 +418,7 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Gift Section */
+/* Regalos */
 .gift-description {
     font-size: 1.1rem;
     color: #ffffff;
@@ -427,7 +427,7 @@ body {
     line-height: 1.8;
 }
 
-/* Music Section */
+/* Música */
 .music-description {
     font-size: 1.1rem;
     color: #ffffff;
@@ -441,7 +441,7 @@ body {
     margin: 0 auto;
 }
 
-/* Final Section */
+/* Despedida */
 .final-message {
     text-align: center;
 }
@@ -533,7 +533,7 @@ body {
     transform: translateY(0);
 }
 
-/* Navigation Dots */
+/* Botones de navegación */
 .navigation-dots {
     position: fixed;
     right: 2rem;
@@ -617,7 +617,7 @@ body {
     50% { opacity: 0.7; }
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     .section-title {
         font-size: 2.5rem;
