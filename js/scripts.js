@@ -59,10 +59,14 @@ function goToSection(sectionIndex) {
     }, 100);
 }
 
-// Sistema de scroll con rueda del mouse
+// Sistema de scroll mejorado con soporte táctil
 function initializeScrolling() {
     let scrollTimeout;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let touchStartTime = 0;
     
+    // Scroll con rueda del mouse (desktop)
     window.addEventListener('wheel', (e) => {
         e.preventDefault();
         
@@ -83,6 +87,49 @@ function initializeScrolling() {
             }
         }, 50);
     }, { passive: false });
+    
+    // Eventos táctiles para móviles
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+    }, { passive: true });
+    
+    window.addEventListener('touchend', (e) => {
+        if (isScrolling) return;
+        
+        touchEndY = e.changedTouches[0].clientY;
+        const touchDuration = Date.now() - touchStartTime;
+        const touchDistance = Math.abs(touchStartY - touchEndY);
+        
+        // Solo procesar si es un swipe válido
+        // Mínimo 50px de distancia y máximo 800ms de duración
+        if (touchDistance > 50 && touchDuration < 800) {
+            if (touchStartY > touchEndY + 50) {
+                // Swipe hacia arriba (ir a siguiente sección)
+                if (currentSection < totalSections - 1) {
+                    goToSection(currentSection + 1);
+                }
+            } else if (touchStartY < touchEndY - 50) {
+                // Swipe hacia abajo (ir a sección anterior)
+                if (currentSection > 0) {
+                    goToSection(currentSection - 1);
+                }
+            }
+        }
+    }, { passive: true });
+    
+    // Prevenir el scroll nativo en toda la página
+    document.body.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+    }, { passive: false });
+    
+    // Permitir scroll en formularios y inputs
+    const allowScrollElements = document.querySelectorAll('input, select, textarea');
+    allowScrollElements.forEach(element => {
+        element.addEventListener('touchmove', (e) => {
+            e.stopPropagation();
+        }, { passive: true });
+    });
     
     // Navegación con teclado
     window.addEventListener('keydown', (e) => {
