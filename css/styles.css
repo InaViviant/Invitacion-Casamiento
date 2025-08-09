@@ -362,6 +362,81 @@ body {
     opacity: 0.9;
 }
 
+/* Sección de colores a evitar */
+.avoid-colors-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avoid-colors-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.color-circles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+}
+
+.color-circle-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.color-circle-item:hover {
+    transform: translateY(-5px);
+}
+
+.color-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-circle::after {
+    content: '✕';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.color-circle-item:hover .color-circle::after {
+    opacity: 1;
+}
+
+.color-name {
+    font-size: 0.9rem;
+    color: #ffffff;
+    text-align: center;
+    opacity: 0.9;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
 /* Formulario */
 .rsvp-description {
     font-size: 1.1rem;
@@ -663,6 +738,27 @@ body {
     .section-content {
         padding: 1rem;
     }
+
+    .color-circles-container {
+        gap: 1.5rem;
+    }
+    
+    .color-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .color-circle::after {
+        font-size: 1.5rem;
+    }
+    
+    .color-name {
+        font-size: 0.8rem;
+    }
+    
+    .avoid-colors-title {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -688,5 +784,18 @@ body {
     
     .final-message h2 {
         font-size: 2rem;
+    }
+    .color-circles-container {
+        gap: 1rem;
+    }
+    
+    .color-circle {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .avoid-colors-section {
+        padding: 1.5rem;
+        margin-top: 2rem;
     }
 }
