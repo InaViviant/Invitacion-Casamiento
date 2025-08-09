@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Reset y configuración base */
 * {
     margin: 0;
     padding: 0;
@@ -11,13 +11,13 @@ html {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-    color: #ffffff;
+    background: linear-gradient(135deg, #1a3d2e 0%, #0f2419 50%, #1a3d2e 100%);
+    color: #d4af37;
     overflow-x: hidden;
     line-height: 1.6;
 }
 
-/* Main Container */
+/* Contenedor principal */
 .main-container {
     position: relative;
     width: 100%;
@@ -25,7 +25,7 @@ body {
     overflow: hidden;
 }
 
-/* Section Styles */
+/* Secciones */
 .section {
     position: absolute;
     top: 0;
@@ -36,31 +36,56 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transform: translateY(50px);
+    visibility: hidden;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 2rem;
+    transform: translateY(50px);
+    background: linear-gradient(135deg, #1a3d2e 0%, #0f2419 50%, #1a3d2e 100%);
 }
 
 .section.active {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
 }
 
 .section-content {
     text-align: center;
     max-width: 800px;
-    width: 100%;
-    animation: fadeInUp 1s ease-out;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Títulos de sección */
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #d4af37;
+    margin-bottom: 2rem;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    animation: shimmer 2s ease-in-out infinite;
 }
 
 /* Hero Section */
 .hero-section {
-    background: radial-gradient(ellipse at center, rgba(26, 26, 46, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%);
+    background: linear-gradient(135deg, #1a3d2e 0%, #0f2419 30%, #1a3d2e 70%, #0f2419 100%);
 }
 
 .hero-content {
     text-align: center;
-    position: relative;
+    animation: fadeInUp 1.5s ease-out;
 }
 
 .initials-container {
@@ -72,8 +97,8 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: 6rem;
     font-weight: 700;
-    color: #1e3a8a;
-    text-shadow: 0 0 20px rgba(30, 58, 138, 0.5);
+    color: #d4af37;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 2;
 }
@@ -85,7 +110,7 @@ body {
     transform: translate(-50%, -50%);
     width: 150px;
     height: 150px;
-    border: 2px solid rgba(30, 58, 138, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     animation: rotate 20s linear infinite;
 }
@@ -93,37 +118,40 @@ body {
 .initials-decoration::before {
     content: '';
     position: absolute;
-    top: -10px;
+    top: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    background: #1e3a8a;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(30, 58, 138, 0.8);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .names {
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
     font-weight: 400;
+    color: #d4af37;
     margin: 2rem 0;
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ampersand {
-    color: #1e3a8a;
     font-style: italic;
-    margin: 0 0.5rem;
+    color: #ffffff;
+    font-size: 3.5rem;
+    margin: 0 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .romantic-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
+    color: #ffffff;
     font-style: italic;
-    color: #e5e7eb;
     margin: 2rem 0;
+    opacity: 0.9;
     line-height: 1.8;
 }
 
@@ -147,11 +175,10 @@ body {
     position: absolute;
     left: 20px;
     top: 0;
-    background: #1e3a8a;
+    background: #d4af37;
     border-radius: 20px 20px 0 0;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
-    box-shadow: 0 0 15px rgba(30, 58, 138, 0.6);
 }
 
 .heart::after {
@@ -169,33 +196,12 @@ body {
 }
 
 .scroll-arrow {
-    width: 2px;
+    width: 30px;
     height: 30px;
-    background: linear-gradient(to bottom, transparent, #1e3a8a);
-    position: relative;
-}
-
-.scroll-arrow::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid #1e3a8a;
-}
-
-/* Section Titles */
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 600;
-    color: #1e3a8a;
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 10px rgba(30, 58, 138, 0.3);
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(45deg);
+    opacity: 0.7;
 }
 
 /* Date Section */
@@ -203,38 +209,52 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     margin: 3rem 0;
+    flex-wrap: wrap;
 }
 
 .date-item, .time-item {
     text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-item:hover, .time-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
 }
 
 .date-number, .time-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: #d4af37;
+    line-height: 1;
 }
 
 .date-month, .date-year, .time-label {
-    font-size: 1.2rem;
-    color: #e5e7eb;
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .time-separator {
     font-size: 2rem;
-    color: #1e3a8a;
+    color: #ffffff;
+    opacity: 0.7;
 }
 
 /* Countdown Section */
 .countdown-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 2rem;
     margin: 3rem 0;
     max-width: 600px;
@@ -244,34 +264,40 @@ body {
 
 .countdown-item {
     text-align: center;
-    padding: 1.5rem;
-    background: rgba(30, 58, 138, 0.1);
-    border: 1px solid rgba(30, 58, 138, 0.3);
-    border-radius: 10px;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: scale(1.05);
 }
 
 .countdown-number {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1e3a8a;
-    text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+    color: #d4af37;
+    line-height: 1;
 }
 
 .countdown-label {
     font-size: 0.9rem;
-    color: #e5e7eb;
+    color: #ffffff;
+    margin-top: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-top: 0.5rem;
 }
 
 .countdown-message {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
-    color: #e5e7eb;
+    color: #ffffff;
     margin-top: 2rem;
+    font-style: italic;
 }
 
 /* Location Section */
@@ -283,71 +309,70 @@ body {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #d4af37;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .venue-address {
     font-size: 1.2rem;
-    color: #e5e7eb;
+    color: #ffffff;
     margin-bottom: 2rem;
-    font-style: italic;
+    opacity: 0.9;
 }
 
 /* Dress Code Section */
 .dress-code-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     margin: 3rem 0;
 }
 
 .dress-item {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     padding: 2rem;
-    background: rgba(30, 58, 138, 0.1);
-    border: 1px solid rgba(30, 58, 138, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
 }
 
 .dress-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
 }
 
 .dress-icon {
     font-size: 3rem;
+    filter: grayscale(1) brightness(1.5);
 }
 
 .dress-content h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem;
-    color: #1e3a8a;
+    color: #d4af37;
     margin-bottom: 0.5rem;
 }
 
 .dress-content p {
-    color: #e5e7eb;
-    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.9;
 }
 
 /* RSVP Section */
 .rsvp-description {
-    font-size: 1.2rem;
-    color: #e5e7eb;
+    font-size: 1.1rem;
+    color: #ffffff;
     margin-bottom: 2rem;
-    line-height: 1.6;
+    opacity: 0.9;
 }
 
 .rsvp-form {
     max-width: 500px;
     margin: 0 auto;
-    text-align: left;
 }
 
 .form-row {
@@ -358,73 +383,62 @@ body {
 
 .form-group {
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
-    color: #1e3a8a;
-    font-weight: 500;
     font-size: 1rem;
+    color: #d4af37;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 1rem;
-    background: rgba(30, 58, 138, 0.1);
-    border: 1px solid rgba(30, 58, 138, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
     font-size: 1rem;
+    backdrop-filter: blur(10px);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #1e3a8a;
-    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.2);
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .form-group input::placeholder {
-    color: rgba(229, 231, 235, 0.5);
-}
-
-/* Buttons */
-.elegant-button {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-    color: #ffffff;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-}
-
-.elegant-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
-    background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-}
-
-.submit-button {
-    width: 100%;
-    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Gift Section */
 .gift-description {
-    font-size: 1.2rem;
-    color: #e5e7eb;
+    font-size: 1.1rem;
+    color: #ffffff;
     margin-bottom: 2rem;
-    line-height: 1.6;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+/* Music Section */
+.music-description {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.music-form {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 /* Final Section */
@@ -435,37 +449,88 @@ body {
 .final-message h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #d4af37;
     margin-bottom: 2rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
 }
 
 .final-decoration {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     margin: 2rem 0;
+    gap: 1rem;
 }
 
 .decoration-line {
-    width: 100px;
+    width: 60px;
     height: 1px;
-    background: linear-gradient(to right, transparent, #1e3a8a, transparent);
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
 }
 
 .decoration-heart {
-    color: #1e3a8a;
     font-size: 1.5rem;
-    animation: pulse 2s infinite;
+    color: #d4af37;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.final-message p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 1rem 0;
+    opacity: 0.9;
 }
 
 .final-names {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2rem;
-    color: #1e3a8a;
+    color: #d4af37;
     font-weight: 600;
-    text-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Botones elegantes */
+.elegant-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #d4af37, #b8941f);
+    color: #0f2419;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.elegant-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.elegant-button:hover::before {
+    left: 100%;
+}
+
+.elegant-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+.elegant-button:active {
+    transform: translateY(0);
 }
 
 /* Navigation Dots */
@@ -474,34 +539,47 @@ body {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    z-index: 1000;
 }
 
 .dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(30, 58, 138, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
+    position: relative;
+}
+
+.dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dot:hover::before,
+.dot.active::before {
+    opacity: 1;
 }
 
 .dot.active {
-    background: #1e3a8a;
-    box-shadow: 0 0 10px rgba(30, 58, 138, 0.8);
-    border-color: rgba(30, 58, 138, 0.5);
+    background: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-.dot:hover {
-    background: #1e3a8a;
-    transform: scale(1.2);
-}
-
-/* Animations */
+/* Animaciones */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -514,67 +592,48 @@ body {
 }
 
 @keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateX(-50%) translateY(0);
-    }
-    40% {
-        transform: translateX(-50%) translateY(-10px);
-    }
-    60% {
-        transform: translateX(-50%) translateY(-5px);
-    }
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
 }
 
 @keyframes rotate {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 @keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: scale(1.1);
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .section {
-        padding: 1rem;
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .names {
+        font-size: 3rem;
     }
     
     .initials {
         font-size: 4rem;
     }
     
-    .names {
-        font-size: 2.5rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
     .date-container {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     
     .countdown-container {
@@ -584,11 +643,13 @@ body {
     
     .dress-code-container {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
     
     .dress-item {
         flex-direction: column;
         text-align: center;
+        gap: 1rem;
     }
     
     .form-row {
@@ -599,11 +660,33 @@ body {
         right: 1rem;
     }
     
+    .section-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .names {
+        font-size: 2.5rem;
+    }
+    
+    .initials {
+        font-size: 3rem;
+    }
+    
     .romantic-quote {
         font-size: 1rem;
     }
     
+    .countdown-container {
+        grid-template-columns: 1fr;
+    }
+    
     .final-message h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 }

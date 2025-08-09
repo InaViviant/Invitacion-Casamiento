@@ -1,17 +1,17 @@
-// Global variables
+// Variables globales
 let currentSection = 0;
-const totalSections = 8;
+const totalSections = document.querySelectorAll('.section').length;
 let isScrolling = false;
 
-// Initialize the application
+// Inicialización
 document.addEventListener('DOMContentLoaded', function() {
-    initializeNavigation();
     initializeCountdown();
-    initializeForm();
+    initializeNavigation();
+    initializeForms();
     initializeScrolling();
 });
 
-// Navigation functionality
+// Sistema de navegación por secciones
 function initializeNavigation() {
     const dots = document.querySelectorAll('.dot');
     
@@ -24,112 +24,97 @@ function initializeNavigation() {
     });
 }
 
-// Smooth scrolling between sections
-function initializeScrolling() {
-    let touchStartY = 0;
-    let touchEndY = 0;
+function goToSection(sectionIndex) {
+    if (sectionIndex < 0 || sectionIndex >= totalSections || isScrolling) return;
     
-    // Mouse wheel events
-    document.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
+    isScrolling = true;
+    
+    // Remover clase active de la sección actual
+    const currentSectionElement = document.querySelector('.section.active');
+    if (currentSectionElement) {
+        currentSectionElement.classList.remove('active');
+    }
+    
+    // Remover clase active del dot actual
+    const currentDot = document.querySelector('.dot.active');
+    if (currentDot) {
+        currentDot.classList.remove('active');
+    }
+    
+    // Actualizar sección actual
+    currentSection = sectionIndex;
+    
+    // Activar nueva sección con delay para la transición
+    setTimeout(() => {
+        const newSection = document.querySelector(`[data-section="${sectionIndex}"]`);
+        const newDot = document.querySelector(`.dot[data-section="${sectionIndex}"]`);
         
+        if (newSection) newSection.classList.add('active');
+        if (newDot) newDot.classList.add('active');
+        
+        // Permitir nuevo scroll después de la transición
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800);
+    }, 100);
+}
+
+// Sistema de scroll con rueda del mouse
+function initializeScrolling() {
+    let scrollTimeout;
+    
+    window.addEventListener('wheel', (e) => {
         e.preventDefault();
         
-        if (e.deltaY > 0) {
-            // Scroll down
-            nextSection();
-        } else {
-            // Scroll up
-            previousSection();
-        }
-    }, { passive: false });
-    
-    // Touch events for mobile
-    document.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-    });
-    
-    document.addEventListener('touchend', (e) => {
         if (isScrolling) return;
         
-        touchEndY = e.changedTouches[0].clientY;
-        const touchDiff = touchStartY - touchEndY;
-        
-        if (Math.abs(touchDiff) > 50) {
-            if (touchDiff > 0) {
-                nextSection();
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (e.deltaY > 0) {
+                // Scroll hacia abajo
+                if (currentSection < totalSections - 1) {
+                    goToSection(currentSection + 1);
+                }
             } else {
-                previousSection();
+                // Scroll hacia arriba
+                if (currentSection > 0) {
+                    goToSection(currentSection - 1);
+                }
             }
-        }
-    });
+        }, 50);
+    }, { passive: false });
     
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
+    // Navegación con teclado
+    window.addEventListener('keydown', (e) => {
         if (isScrolling) return;
         
         switch(e.key) {
             case 'ArrowDown':
             case ' ':
                 e.preventDefault();
-                nextSection();
+                if (currentSection < totalSections - 1) {
+                    goToSection(currentSection + 1);
+                }
                 break;
             case 'ArrowUp':
                 e.preventDefault();
-                previousSection();
+                if (currentSection > 0) {
+                    goToSection(currentSection - 1);
+                }
+                break;
+            case 'Home':
+                e.preventDefault();
+                goToSection(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goToSection(totalSections - 1);
                 break;
         }
     });
 }
 
-function nextSection() {
-    if (currentSection < totalSections - 1) {
-        goToSection(currentSection + 1);
-    }
-}
-
-function previousSection() {
-    if (currentSection > 0) {
-        goToSection(currentSection - 1);
-    }
-}
-
-function goToSection(sectionIndex) {
-    if (sectionIndex === currentSection || isScrolling) return;
-    
-    isScrolling = true;
-    
-    // Remove active class from current section
-    const currentSectionElement = document.querySelector(`.section[data-section="${currentSection}"]`);
-    const currentDot = document.querySelector(`.dot[data-section="${currentSection}"]`);
-    
-    if (currentSectionElement) {
-        currentSectionElement.classList.remove('active');
-    }
-    if (currentDot) {
-        currentDot.classList.remove('active');
-    }
-    
-    // Add active class to new section
-    const newSectionElement = document.querySelector(`.section[data-section="${sectionIndex}"]`);
-    const newDot = document.querySelector(`.dot[data-section="${sectionIndex}"]`);
-    
-    if (newSectionElement) {
-        newSectionElement.classList.add('active');
-    }
-    if (newDot) {
-        newDot.classList.add('active');
-    }
-    
-    currentSection = sectionIndex;
-    
-    // Reset scrolling flag after animation
-    setTimeout(() => {
-        isScrolling = false;
-    }, 800);
-}
-
-// Countdown functionality
+// Cuenta regresiva
 function initializeCountdown() {
     const weddingDate = new Date('2030-10-21T21:00:00').getTime();
     
@@ -161,11 +146,12 @@ function initializeCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// Form functionality
-function initializeForm() {
+// Inicializar formularios
+function initializeForms() {
+    // Formulario RSVP
+    const rsvpForm = document.getElementById('rsvpForm');
     const attendanceSelect = document.getElementById('attendance');
     const guestsGroup = document.getElementById('guestsGroup');
-    const form = document.getElementById('rsvpForm');
     
     attendanceSelect.addEventListener('change', function() {
         if (this.value === 'si') {
@@ -176,225 +162,201 @@ function initializeForm() {
         }
     });
     
-    form.addEventListener('submit', function(e) {
+    rsvpForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const formData = new FormData(form);
+        const formData = new FormData(this);
         const data = Object.fromEntries(formData);
         
-        // Add form validation
-        if (!validateForm(data)) {
-            return;
-        }
+        // Simular envío de datos
+        showNotification('¡Gracias por confirmar tu asistencia!', 'success');
         
-        // Simulate form submission
-        showSuccessMessage();
+        // Limpiar formulario
+        this.reset();
+        guestsGroup.style.display = 'none';
+    });
+    
+    // Formulario de música
+    const musicForm = document.getElementById('musicForm');
+    musicForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const songName = document.getElementById('songName').value;
+        const guestName = document.getElementById('guestName').value;
+        
+        if (songName.trim()) {
+            showNotification(`¡Gracias ${guestName || 'por tu sugerencia'}! Consideraremos "${songName}" para nuestra playlist.`, 'success');
+            this.reset();
+        }
     });
 }
 
-function validateForm(data) {
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const dni = document.getElementById('dni').value.trim();
-    const attendance = document.getElementById('attendance').value;
-    
-    if (!firstName || !lastName || !dni || !attendance) {
-        showErrorMessage('Por favor, completa todos los campos obligatorios.');
-        return false;
-    }
-    
-    // DNI validation (basic)
-    const dniPattern = /^\d{1,2}\.?\d{3}\.?\d{3}$/;
-    if (!dniPattern.test(dni)) {
-        showErrorMessage('Por favor, ingresa un DNI válido.');
-        return false;
-    }
-    
-    return true;
-}
-
-function showSuccessMessage() {
-    const button = document.querySelector('.submit-button');
-    const originalText = button.textContent;
-    
-    button.textContent = '¡Confirmación enviada!';
-    button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-    button.disabled = true;
-    
-    setTimeout(() => {
-        button.textContent = originalText;
-        button.style.background = 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)';
-        button.disabled = false;
-    }, 3000);
-}
-
-function showErrorMessage(message) {
-    // Create error message element
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    errorDiv.style.cssText = `
-        background: rgba(239, 68, 68, 0.1);
-        border: 1px solid rgba(239, 68, 68, 0.3);
-        color: #ef4444;
-        padding: 1rem;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        animation: fadeInUp 0.3s ease-out;
-    `;
-    
-    const form = document.getElementById('rsvpForm');
-    form.insertBefore(errorDiv, form.firstChild);
-    
-    setTimeout(() => {
-        errorDiv.remove();
-    }, 5000);
-}
-
-// Calendar functionality
+// Funciones para botones
 function addToCalendar() {
-    const title = 'Casamiento de Iñaki y Melany';
+    const startDate = '20301021T210000';
+    const endDate = '20301022T040000';
+    const title = 'Casamiento Iñaki y Melany';
     const details = 'Celebración de la boda de Iñaki y Melany en Estancia la Mimosa';
     const location = 'Estancia la Mimosa';
-    const startDate = '20301021T210000Z';
-    const endDate = '20301022T040000Z';
     
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
     
     window.open(googleCalendarUrl, '_blank');
+    showNotification('Abriendo Google Calendar...', 'info');
 }
 
-// Gift functionality
 function handleGiftClick() {
-    const modal = createGiftModal();
-    document.body.appendChild(modal);
+    const bankInfo = `
+Datos para transferencia:
+CBU: 0000003100010000000001
+Alias: IÑAKI.MELANY.BODA
+Titular: Iñaki y Melany
+Banco: Banco Ejemplo
+
+¡Gracias por tu generosidad!
+    `;
+    
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText('0000003100010000000001').then(() => {
+            showNotification('CBU copiado al portapapeles', 'success');
+        });
+    }
+    
+    alert(bankInfo);
+}
+
+// Sistema de notificaciones
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
+    
+    // Estilos para la notificación
+    notification.style.cssText = `
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background: ${type === 'success' ? '#2d5a3d' : type === 'error' ? '#5a2d2d' : '#2d3d5a'};
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+        max-width: 300px;
+        word-wrap: break-word;
+    `;
+    
+    document.body.appendChild(notification);
     
     setTimeout(() => {
-        modal.classList.add('active');
-    }, 10);
-}
-
-function createGiftModal() {
-    const modal = document.createElement('div');
-    modal.className = 'gift-modal';
-    modal.innerHTML = `
-        <div class="modal-overlay">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeGiftModal()">&times;</button>
-                <h3>Información para Transferencia</h3>
-                <div class="bank-info">
-                    <div class="bank-detail">
-                        <strong>Banco:</strong> Banco Ejemplo
-                    </div>
-                    <div class="bank-detail">
-                        <strong>Titular:</strong> Iñaki y Melany
-                    </div>
-                    <div class="bank-detail">
-                        <strong>CBU:</strong> 1234567890123456789012
-                    </div>
-                    <div class="bank-detail">
-                        <strong>Alias:</strong> BODA.INAKI.MELANY
-                    </div>
-                </div>
-                <p class="modal-note">¡Gracias por tu generosidad!</p>
-            </div>
-        </div>
-    `;
-    
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    `;
-    
-    const overlay = modal.querySelector('.modal-overlay');
-    overlay.style.cssText = `
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-    `;
-    
-    const content = modal.querySelector('.modal-content');
-    content.style.cssText = `
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        border: 1px solid rgba(30, 58, 138, 0.3);
-        border-radius: 15px;
-        padding: 2rem;
-        max-width: 500px;
-        width: 100%;
-        position: relative;
-        text-align: center;
-    `;
-    
-    return modal;
-}
-
-function closeGiftModal() {
-    const modal = document.querySelector('.gift-modal');
-    if (modal) {
-        modal.style.opacity = '0';
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
         setTimeout(() => {
-            modal.remove();
+            document.body.removeChild(notification);
         }, 300);
-    }
+    }, 3000);
 }
 
-// Add CSS for modal
-const modalStyles = `
-    .gift-modal.active {
-        opacity: 1 !important;
+// Agregar estilos de animación para notificaciones
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
     
-    .modal-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        color: #1e3a8a;
-        font-size: 2rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
-    
-    .modal-close:hover {
-        color: #3b82f6;
-    }
-    
-    .bank-info {
-        margin: 2rem 0;
-        text-align: left;
-    }
-    
-    .bank-detail {
-        margin: 1rem 0;
-        padding: 0.5rem;
-        background: rgba(30, 58, 138, 0.1);
-        border-radius: 5px;
-        color: #e5e7eb;
-    }
-    
-    .bank-detail strong {
-        color: #1e3a8a;
-    }
-    
-    .modal-note {
-        color: #1e3a8a;
-        font-style: italic;
-        margin-top: 2rem;
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
     }
 `;
+document.head.appendChild(notificationStyles);
 
-// Add modal styles to head
-const styleSheet = document.createElement('style');
-styleSheet.textContent = modalStyles;
-document.head.appendChild(styleSheet);
+// Efectos adicionales
+document.addEventListener('DOMContentLoaded', function() {
+    // Efecto de partículas en el hero
+    createFloatingHearts();
+    
+    // Animaciones de entrada para elementos
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }
+        });
+    }, observerOptions);
+    
+    // Observar elementos para animaciones
+    document.querySelectorAll('.date-item, .time-item, .countdown-item, .dress-item').forEach(el => {
+        observer.observe(el);
+    });
+});
+
+function createFloatingHearts() {
+    const heroSection = document.querySelector('.hero-section');
+    
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '♥';
+        heart.style.cssText = `
+            position: absolute;
+            color: rgba(212, 175, 55, 0.3);
+            font-size: ${Math.random() * 20 + 10}px;
+            left: ${Math.random() * 100}%;
+            top: 100%;
+            pointer-events: none;
+            animation: floatUp ${Math.random() * 3 + 4}s linear forwards;
+            z-index: 1;
+        `;
+        
+        heroSection.appendChild(heart);
+        
+        setTimeout(() => {
+            if (heart.parentNode) {
+                heart.parentNode.removeChild(heart);
+            }
+        }, 7000);
+    }
+    
+    // Crear corazones flotantes cada cierto tiempo
+    setInterval(createHeart, 3000);
+}
+
+// Agregar animación de corazones flotantes
+const floatingHeartsStyle = document.createElement('style');
+floatingHeartsStyle.textContent = `
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(floatingHeartsStyle);
