@@ -1,84 +1,152 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Casamiento - Iñaki y Melany</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="main-container">
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-heart">
+                <div class="heart"></div>
+            </div>
+            <div class="loading-text">Cargando nuestra historia...</div>
+        </div>
+
         <!-- Presentación -->
         <section class="section hero-section active" data-section="0">
+            <div class="hero-background"></div>
+            <div class="floating-elements">
+                <div class="floating-heart" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+                <div class="floating-heart" style="top: 60%; right: 15%; animation-delay: 2s;"></div>
+                <div class="floating-heart" style="top: 30%; right: 20%; animation-delay: 4s;"></div>
+                <div class="floating-heart" style="bottom: 20%; left: 20%; animation-delay: 6s;"></div>
+            </div>
+
             <div class="hero-content">
                 <div class="initials-container">
                     <div class="initials">I&M</div>
-                    <div class="initials-decoration"></div>
+                    <div class="initials-ring"></div>
                 </div>
-                
-                <h1 class="names">Iñaki <span class="ampersand">&</span> Melany</h1>
-                
+
+                <h1 class="names">
+                    <span class="name-animation">Iñaki</span>
+                    <span class="ampersand">&</span>
+                    <span class="name-animation">Melany</span>
+                </h1>
+
                 <div class="romantic-quote">
-                    <p>"Dos almas que se encuentran, dos corazones que laten al unísono,</p>
-                    <p>una historia de amor que comienza para siempre"</p>
+                    <p class="quote-line">"Dos almas que se encuentran,</p>
+                    <p class="quote-line">dos corazones que laten al unísono,</p>
+                    <p class="quote-line">una historia de amor que comienza para siempre"</p>
                 </div>
-                
+
                 <div class="heart-container">
-                    <div class="heart"></div>
+                    <div class="heart-improved"></div>
                 </div>
-                
+
                 <div class="scroll-indicator">
+                    <div class="scroll-text">Desliza para continuar</div>
                     <div class="scroll-arrow"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Día del casamiento -->
+        <!-- Fecha -->
         <section class="section date-section" data-section="1">
             <div class="section-content">
-                <h2 class="section-title">Fecha y Hora</h2>
+                <h2 class="section-title">
+                    <span class="title-decoration">♥</span>
+                    Fecha y Hora
+                    <span class="title-decoration">♥</span>
+                </h2>
                 <div class="date-container">
-                    <div class="date-item">
-                        <div class="date-number">21</div>
-                        <div class="date-month">Octubre</div>
-                        <div class="date-year">2030</div>
-                    </div>
-                    <div class="time-separator">•</div>
-                    <div class="time-item">
-                        <div class="time-number">21:00</div>
-                        <div class="time-label">Horas</div>
+                    <div class="date-card main-date">
+                        <div class="date-header">Nos Casamos</div>
+                        <div class="date-display">
+                            <div class="date-day">21</div>
+                            <div class="date-month">Octubre</div>
+                            <div class="date-year">2030</div>
+                        </div>
+                        <div class="date-divider"></div>
+                        <div class="time-display">
+                            <div class="time-number">21:00</div>
+                            <div class="time-label">Ceremonia y Fiesta</div>
+                        </div>
                     </div>
                 </div>
-                <button class="elegant-button" onclick="addToCalendar()">
+                <button class="elegant-button pulse-button" onclick="addToCalendar()">
+                    <span class="button-icon">📅</span>
                     Agregar al Calendario
                 </button>
             </div>
         </section>
 
-        <!-- Cuenta atras -->
+        <!-- Cuenta Regresiva -->
         <section class="section countdown-section" data-section="2">
             <div class="section-content">
-                <h2 class="section-title">Cuenta Regresiva</h2>
+                <h2 class="section-title">Faltan...</h2>
                 <div class="countdown-container">
                     <div class="countdown-item">
-                        <div class="countdown-number" id="days">000</div>
-                        <div class="countdown-label">Días</div>
+                        <div class="countdown-circle">
+                            <svg class="countdown-svg" width="100" height="100">
+                                <circle cx="50" cy="50" r="45" class="countdown-track"></circle>
+                                <circle cx="50" cy="50" r="45" class="countdown-progress" id="days-progress"></circle>
+                            </svg>
+                            <div class="countdown-content">
+                                <div class="countdown-number" id="days">000</div>
+                                <div class="countdown-label">Días</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Horas</div>
+                        <div class="countdown-circle">
+                            <svg class="countdown-svg" width="100" height="100">
+                                <circle cx="50" cy="50" r="45" class="countdown-track"></circle>
+                                <circle cx="50" cy="50" r="45" class="countdown-progress" id="hours-progress"></circle>
+                            </svg>
+                            <div class="countdown-content">
+                                <div class="countdown-number" id="hours">00</div>
+                                <div class="countdown-label">Horas</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">Minutos</div>
+                        <div class="countdown-circle">
+                            <svg class="countdown-svg" width="100" height="100">
+                                <circle cx="50" cy="50" r="45" class="countdown-track"></circle>
+                                <circle cx="50" cy="50" r="45" class="countdown-progress" id="minutes-progress">
+                                </circle>
+                            </svg>
+                            <div class="countdown-content">
+                                <div class="countdown-number" id="minutes">00</div>
+                                <div class="countdown-label">Minutos</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">Segundos</div>
+                        <div class="countdown-circle">
+                            <svg class="countdown-svg" width="100" height="100">
+                                <circle cx="50" cy="50" r="45" class="countdown-track"></circle>
+                                <circle cx="50" cy="50" r="45" class="countdown-progress" id="seconds-progress">
+                                </circle>
+                            </svg>
+                            <div class="countdown-content">
+                                <div class="countdown-number" id="seconds">00</div>
+                                <div class="countdown-label">Segundos</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <p class="countdown-message" id="countdown-text">Nos casamos en...</p>
+                <p class="countdown-message" id="countdown-text">para nuestro día especial</p>
             </div>
         </section>
 
@@ -86,58 +154,109 @@
         <section class="section location-section" data-section="3">
             <div class="section-content">
                 <h2 class="section-title">Lugar de Celebración</h2>
-                <div class="location-content">
-                    <div class="venue-name">Estancia la Mimosa</div>
-                    <div class="venue-address">Un lugar mágico para nuestro día especial</div>
-                    <a href="https://maps.app.goo.gl/15AFMSVF9Pb9RT918" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       class="elegant-button location-button">
-                        Ver en Google Maps
-                    </a>
+                <div class="location-card">
+                    <div class="location-icon">🏛️</div>
+                    <div class="venue-info">
+                        <div class="venue-name">Estancia la Mimosa</div>
+                        <div class="venue-description">Un lugar mágico donde comenzará nuestra historia</div>
+                        <div class="venue-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>Ceremonia y Recepción</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">🌸</span>
+                                <span>Jardines y Salón Principal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://maps.app.goo.gl/15AFMSVF9Pb9RT918" target="_blank" rel="noopener noreferrer"
+                    class="elegant-button location-button">
+                    <span class="button-icon">🗺️</span>
+                    Ver en Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- Galería de Fotos -->
+        <section class="section photos-section" data-section="4">
+            <div class="section-content">
+                <h2 class="section-title">Nuestra Historia</h2>
+                <div class="photos-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slides" id="carouselSlides">
+                            <div class="slide active">
+                                <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Foto 1">
+                                <div class="slide-caption">Nuestro primer encuentro</div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.pexels.com/photos/1043458/pexels-photo-1043458.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Foto 2">
+                                <div class="slide-caption">Momentos especiales</div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Foto 3">
+                                <div class="slide-caption">Compartiendo sueños</div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.pexels.com/photos/1445527/pexels-photo-1445527.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Foto 4">
+                                <div class="slide-caption">El día que nos comprometimos</div>
+                            </div>
+                            <div class="slide">
+                                <img src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Foto 5">
+                                <div class="slide-caption">Preparando nuestro futuro</div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+                        <button class="carousel-btn next-btn" onclick="changeSlide(1)">❯</button>
+                    </div>
+                    <div class="carousel-dots">
+                        <span class="dot-photo active" onclick="goToSlide(0)"></span>
+                        <span class="dot-photo" onclick="goToSlide(1)"></span>
+                        <span class="dot-photo" onclick="goToSlide(2)"></span>
+                        <span class="dot-photo" onclick="goToSlide(3)"></span>
+                        <span class="dot-photo" onclick="goToSlide(4)"></span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Código de vestimenta -->
-        <section class="section dress-section" data-section="4">
+        <!-- Código de Vestimenta -->
+        <section class="section dress-section" data-section="5">
             <div class="section-content">
                 <h2 class="section-title">Código de Vestimenta</h2>
-                
-                <div class="dress-main-message">
-                    <div class="elegance-icon">✨</div>
-                    <h3 class="elegance-title">Elegancia Formal</h3>
-                    <p class="elegance-description">
-                        Te pedimos que vengas con tu mejor look elegante.<br>
-                        Queremos que te sientas cómodo/a y radiante en nuestro día especial.
-                    </p>
-                </div>
 
                 <div class="dress-guidelines">
-                    <div class="guideline-item">
+                    <div class="guideline-card">
                         <div class="guideline-icon">👗</div>
                         <div class="guideline-content">
                             <h4>Damas</h4>
                             <p>Vestido elegante largo o midi</p>
+                            <span class="guideline-note">Colores sugeridos: pasteles, dorados, plateados</span>
                         </div>
                     </div>
-                    
-                    <div class="guideline-item">
+
+                    <div class="guideline-card">
                         <div class="guideline-icon">🤵</div>
                         <div class="guideline-content">
                             <h4>Caballeros</h4>
                             <p>Traje formal con corbata o moño</p>
+                            <span class="guideline-note">Preferiblemente tonos oscuros clásicos</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="color-restriction">
+                <div class="color-restriction-card">
                     <div class="restriction-header">
-                        <div class="restriction-icon">🚫</div>
-                        <h3 class="restriction-title">Colores Reservados</h3>
-                        <p class="restriction-subtitle">Por favor, evita estos colores para que no coincidan con nuestra paleta especial</p>
+                        <h3 class="restriction-title">Colores a Evitar</h3>
+                        <p class="restriction-subtitle">Por favor, evita estos colores</p>
                     </div>
-                    
+
                     <div class="restricted-colors">
                         <div class="color-item">
                             <div class="color-swatch black"></div>
@@ -148,61 +267,85 @@
                             <span>Rojo</span>
                         </div>
                         <div class="color-item">
-                            <div class="color-swatch white"></div>
-                            <span>Blanco</span>
+                            <div class="color-swatch blue"></div>
+                            <span>Azul</span>
                         </div>
                         <div class="color-item">
                             <div class="color-swatch green"></div>
-                            <span>Verde Pantano</span>
+                            <span>Verde</span>
                         </div>
                         <div class="color-item">
-                            <div class="color-swatch navy"></div>
-                            <span>Azul Marino</span>
+                            <div class="color-swatch white"></div>
+                            <span>Blanco</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="dress-footer">
-                    <p class="dress-note">
-                        💡 <em>Sugerencia: Tonos pasteles, dorados, plateados y colores tierra lucen hermosos en fotos</em>
-                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Formulario -->
-        <section class="section rsvp-section" data-section="5">
+        <!-- Confirmación de Asistencia -->
+        <section class="section rsvp-section" data-section="6">
             <div class="section-content">
                 <h2 class="section-title">Confirmación de Asistencia</h2>
-                <div class="rsvp-content">
-                    <p class="rsvp-description">
-                        Por favor, confirmanos tu asistencia completando los siguientes datos:
-                    </p>
+                <div class="rsvp-card">
+                    <div class="rsvp-header">
+                        <div class="rsvp-icon">💌</div>
+                        <p class="rsvp-description">
+                            Nos encantaría contar con tu presencia. Por favor, confirmanos tu asistencia.
+                        </p>
+                    </div>
+
                     <form class="rsvp-form" id="rsvpForm">
-                        <div class="form-row">
+                        <div class="form-grid">
                             <div class="form-group">
-                                <label for="firstName">Nombre</label>
-                                <input type="text" id="firstName" required>
+                                <label for="firstName">
+                                    <span class="label-icon">👤</span>
+                                    Nombre
+                                </label>
+                                <input type="text" id="firstName" required placeholder="Tu nombre">
                             </div>
+
                             <div class="form-group">
-                                <label for="lastName">Apellido</label>
-                                <input type="text" id="lastName" required>
+                                <label for="lastName">
+                                    <span class="label-icon">👤</span>
+                                    Apellido
+                                </label>
+                                <input type="text" id="lastName" required placeholder="Tu apellido">
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="dni">DNI</label>
-                            <input type="text" id="dni" placeholder="12.345.678" required>
+                            <label for="dni">
+                                <span class="label-icon">🆔</span>
+                                DNI
+                            </label>
+                            <input type="text" id="dni" required placeholder="12.345.678">
                         </div>
+
                         <div class="form-group">
-                            <label for="attendance">¿Asistirás?</label>
-                            <select id="attendance" required>
-                                <option value="">Selecciona una opción</option>
-                                <option value="si">Sí, asistiré</option>
-                                <option value="no">No podré asistir</option>
-                            </select>
+                            <label for="attendance">
+                                <span class="label-icon">💖</span>
+                                ¿Nos acompañarás?
+                            </label>
+                            <div class="attendance-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="attendance" value="si" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">¡Sí, estaré allí! 🎉</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="attendance" value="no" required>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-text">No podré asistir 😔</span>
+                                </label>
+                            </div>
                         </div>
+
                         <div class="form-group" id="guestsGroup" style="display: none;">
-                            <label for="guests">¿Vienes acompañado/a?</label>
+                            <label for="guests">
+                                <span class="label-icon">👥</span>
+                                ¿Vienes acompañado/a?
+                            </label>
                             <select id="guests">
                                 <option value="0">Solo/a</option>
                                 <option value="1">Con 1 acompañante</option>
@@ -210,7 +353,9 @@
                                 <option value="3">Con 3 acompañantes</option>
                             </select>
                         </div>
+
                         <button type="submit" class="elegant-button submit-button">
+                            <span class="button-icon">💕</span>
                             Confirmar Asistencia
                         </button>
                     </form>
@@ -219,57 +364,88 @@
         </section>
 
         <!-- Regalos -->
-        <section class="section gift-section" data-section="6">
+        <section class="section gift-section" data-section="7">
             <div class="section-content">
                 <h2 class="section-title">Regalo de Bodas</h2>
-                <div class="gift-content">
-                    <p class="gift-description">
-                        Tu presencia es nuestro mejor regalo, pero si deseas contribuir con algo especial para nuestro nuevo hogar:
-                    </p>
-                    <button class="elegant-button gift-button" onclick="handleGiftClick()">
-                        Realizar Transferencia
-                    </button>
+                <div class="gift-card">
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-content">
+                        <h3>Tu presencia es nuestro mejor regalo</h3>
+                        <p class="gift-description">
+                            Pero si deseas contribuir con algo especial para nuestro nuevo hogar,
+                            puedes hacerlo a través de una transferencia bancaria.
+                        </p>
+                        <button class="elegant-button gift-button" onclick="handleGiftClick()">
+                            <span class="button-icon">💳</span>
+                            Información Bancaria
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Música -->
-        <section class="section music-section" data-section="7">
+        <section class="section music-section" data-section="8">
             <div class="section-content">
                 <h2 class="section-title">Música Especial</h2>
-                <div class="music-content">
-                    <p class="music-description">
-                        ¿Hay alguna canción especial que te gustaría escuchar en nuestra celebración?
-                    </p>
-                    <form class="music-form" id="musicForm">
-                        <div class="form-group">
-                            <label for="songName">Nombre de la canción</label>
-                            <input type="text" id="songName" placeholder="Ej: Perfect - Ed Sheeran">
-                        </div>
-                        <div class="form-group">
-                            <label for="guestName">Tu nombre</label>
-                            <input type="text" id="guestName" placeholder="Para saber quién la sugirió">
-                        </div>
-                        <button type="submit" class="elegant-button">
-                            Sugerir Canción
-                        </button>
-                    </form>
+                <div class="music-card">
+                    <div class="music-icon">🎵</div>
+                    <div class="music-content">
+                        <p class="music-description">
+                            ¿Hay alguna canción especial que te gustaría escuchar en nuestra celebración?
+                        </p>
+                        <form class="music-form" id="musicForm">
+                            <div class="form-group">
+                                <label for="songName">
+                                    <span class="label-icon">🎼</span>
+                                    Canción
+                                </label>
+                                <input type="text" id="songName" placeholder="Ej: Perfect - Ed Sheeran">
+                            </div>
+                            <div class="form-group">
+                                <label for="guestName">
+                                    <span class="label-icon">👤</span>
+                                    Tu nombre
+                                </label>
+                                <input type="text" id="guestName" placeholder="Para saber quién la sugirió">
+                            </div>
+                            <button type="submit" class="elegant-button">
+                                <span class="button-icon">🎶</span>
+                                Sugerir Canción
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Despedida -->
-        <section class="section final-section" data-section="8">
+        <section class="section final-section" data-section="9">
             <div class="section-content">
-                <div class="final-message">
-                    <h2>¡Esperamos celebrar este día tan especial junto a ti!</h2>
+                <div class="final-card">
+                    <div class="final-hearts">
+                        <div class="heart-improved small"></div>
+                        <div class="heart-improved medium"></div>
+                        <div class="heart-improved small"></div>
+                    </div>
+
+                    <h2 class="final-title">¡Esperamos celebrar este día tan especial junto a ti!</h2>
+
                     <div class="final-decoration">
                         <div class="decoration-line"></div>
                         <div class="decoration-heart">♥</div>
                         <div class="decoration-line"></div>
                     </div>
-                    <p>Con amor,</p>
-                    <p class="final-names">Iñaki & Melany</p>
+
+                    <div class="final-message">
+                        <p class="with-love">Con todo nuestro amor,</p>
+                        <div class="final-names">
+                            <span class="name-fancy">Iñaki</span>
+                            <span class="final-ampersand">&</span>
+                            <span class="name-fancy">Melany</span>
+                        </div>
+                        <p class="final-date">21 de Octubre, 2030</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -277,18 +453,24 @@
 
     <!-- Botones de navegación -->
     <div class="navigation-dots">
-        <div class="dot active" data-section="0"></div>
-        <div class="dot" data-section="1"></div>
-        <div class="dot" data-section="2"></div>
-        <div class="dot" data-section="3"></div>
-        <div class="dot" data-section="4"></div>
-        <div class="dot" data-section="5"></div>
-        <div class="dot" data-section="6"></div>
-        <div class="dot" data-section="7"></div>
-        <div class="dot" data-section="8"></div>
+        <div class="dot active" data-section="0" data-tooltip="Inicio"></div>
+        <div class="dot" data-section="1" data-tooltip="Fecha"></div>
+        <div class="dot" data-section="2" data-tooltip="Cuenta Regresiva"></div>
+        <div class="dot" data-section="3" data-tooltip="Ubicación"></div>
+        <div class="dot" data-section="4" data-tooltip="Fotos"></div>
+        <div class="dot" data-section="5" data-tooltip="Vestimenta"></div>
+        <div class="dot" data-section="6" data-tooltip="RSVP"></div>
+        <div class="dot" data-section="7" data-tooltip="Regalos"></div>
+        <div class="dot" data-section="8" data-tooltip="Música"></div>
+        <div class="dot" data-section="9" data-tooltip="Despedida"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
     </div>
 
     <script src="js/scripts.js"></script>
-    
 </body>
+
 </html>
